@@ -6,17 +6,18 @@
 #    By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 12:19:12 by tecker            #+#    #+#              #
-#    Updated: 2024/12/07 12:50:06 by tomecker         ###   ########.fr        #
+#    Updated: 2024/12/07 22:07:53 by tomecker         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			=	ex00
+NAME			=	ex01
 
 CC				=	c++
 
 CFLAGS			=	-Wall -Werror -Wextra -std=c++17
 
-SRC_FILES		=	main.cpp
+SRC_FILES		=	main.cpp \
+					Span.cpp
 
 OBJ_DIR			=	./obj
 

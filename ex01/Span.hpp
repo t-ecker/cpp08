@@ -1,31 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tomecker <tomecker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:23:18 by tecker            #+#    #+#             */
-/*   Updated: 2024/12/07 12:51:24 by tomecker         ###   ########.fr       */
+/*   Updated: 2024/12/07 20:17:04 by tomecker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-#define EASYFIND_HPP
+#ifndef SPAN_HPP
+#define SPAN_HPP
 
 #include <string.h>
 #include <iostream>
 #include <algorithm>
 #include <stdexcept>
+#include <vector>
 
-template<typename T>
-void easyfind(T a, int i)
+class Span
 {
-	typename T::iterator it;
-	it = std::find(a.begin(), a.end(), i);
-	if (it == a.end())
-		throw (std::invalid_argument("Value was not found in the container!"));
-	std::cout << "value found in container at index: " << std::distance(a.begin(), it) << std::endl;
-}
+	private:
+		uint _N;
+		std::vector<int> _vec;
+	public:
+		Span();
+		Span(uint N);
+		Span(const Span &src);
+        Span &operator=(const Span &src);
+		~Span();
+		void addNumber(int n);
+
+		template<typename T>
+		void addRange(T start, T end)
+		{
+			if (_vec.size() + std::distance(start, end) > _N)
+				throw std::out_of_range("there is no space left for total range!");
+			_vec.insert(_vec.end(), start, end);
+		}
+		
+		int shortestSpan(void);
+		int longestSpan(void);
+};
 
 #endif
